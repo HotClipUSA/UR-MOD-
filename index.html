@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UR MOD | ফাইল ডাউনলোড সেন্টার</title>
+    <style>
+        /* CSS কোড: নতুন হেডার ও ফুটার সহ ডিজাইন */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f0f2f5;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+        .main-wrapper {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            flex-grow: 1; 
+            padding-bottom: 50px; 
+        }
+        .container {
+            width: 90%;
+            max-width: 450px;
+            background: #fff;
+            padding: 0;
+            border-radius: 12px;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            overflow: hidden;
+            margin-top: 20px;
+        }
+
+        /* নতুন হেডার ডিজাইন */
+        .header-bar {
+            background-color: #1a73e8; 
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+        }
+        .logo-circle {
+            width: 80px; 
+            height: 80px;
+            background-color: white;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 900; 
+            color: #1a73e8; 
+            font-size: 16px; 
+            line-height: 1.2;
+            text-align: center;
+            padding: 5px;
+        }
+        .header-title h1 {
+            color: white;
+            margin: 0;
+            font-size: 30px; 
+            font-weight: 900; 
+            text-align: center;
+            letter-spacing: 1px; 
+        }
+
+        /* কন্টেন্ট এলাকার প্যাডিং */
+        .page-content {
+            padding: 0 30px 30px; 
+        }
+        
+        /* --- অন্যান্য ডিজাইন --- */
+        #main-page .content-box {
+            background-color: #e8f0fe;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        #main-page .file-btn {
+            background-color: #28a745;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            width: 100%;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        #main-page .file-btn:hover {
+            background-color: #218838;
+        }
+        #main-page .ad-container-1 {
+            margin: 20px 0;
+            background: #ddd;
+            height: 150px; 
+            border: 1px dashed #aaa;
+            overflow: hidden; 
+        }
+        #main-page p {
+            font-size: 14px;
+            color: #666;
+            margin: 10px 0 0;
+        }
+        #main-page .ad-container-1 iframe {
+            display: block;
+            width: 100%;
+            height: 150px;
+        }
+        #task-page h2 {
+            font-size: 20px;
+            color: #1a73e8;
+            margin-bottom: 10px;
+        }
+        #task-page #step-counter {
+            font-size: 22px;
+            font-weight: bold;
+            color: #dc3545;
+            margin-bottom: 20px;
+        }
+        #task-page .instruction {
+            background-color: #fff3cd;
+            color: #856404;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        #task-page #ad-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        #task-page #unlock-button {
+            background-color: #6c757d;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: not-allowed;
+            width: 100%;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        #task-page #unlock-button:not(:disabled) {
+            background-color: #28a745;
+            cursor: pointer;
+        }
+        #task-page #timer-display {
+            margin-top: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #dc3545;
+        }
+        .hidden {
+            display: none;
+        }
+
+        /* ফুটার ডিজাইন */
+        .footer {
+            width: 100%;
+            background-color: #333;
+            color: #ccc;
+            padding: 15px 0;
+            text-align: center;
+            font-size: 13px;
+            position: fixed; 
+            bottom: 0;
+            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="container">
+            
+            <div class="header-bar">
+                <div class="logo-circle"><span>UR MOD</span></div> 
+                <div class="header-title"><h1>UR MOD</h1></div>
+            </div>
+
+            <div id="main-page" class="page page-content">
+                <div class="content-box">
+                    <p>এখানে আপনি আপনার প্রয়োজনীয় অ্যাপস ও ফাইল সহজে ডাউনলোড করতে পারবেন। টাস্ক সম্পূর্ণ করে আনলক করুন!</p>
+                    
+                    <div class="content-box">
+                    <p>সবজি Mobile VIP MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
+                    <button id="download-file-4" class="file-btn">সবজি_VIP_MOD_OBB.zip ডাউনলোড করুন</button>
+                </div>
+                    
+                    <button id="download-file-1" class="file-btn">TheKingCheats_V145.apk ডাউনলোড করুন</button>
+                </div>
+                
+                <div class="ad-container-1">
+                    <iframe 
+                        src="https://www.effectivegatecpm.com/utsu280n?key=1573b3d30150666f41a1b89fc41a58ca" 
+                        frameborder="0" 
+                        scrolling="no"
+                        style="border:none;">
+                    </iframe>
+                </div>
+
+                <div class="content-box">
+                    <p>PUBG Mobile VIP MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
+                    <button id="download-file-2" class="file-btn">PUBGM_VIP_MOD_OBB.zip ডাউনলোড করুন</button>
+                </div>
+
+                <div class="content-box">
+                    <p>BGMI New Update MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
+                    <button id="download-file-3" class="file-btn">BGMI_New_MOD.apk ডাউনলোড করুন</button>
+                </div>
+                
+
+                <p>আপনার ফাইলটি ডাউনলোড করতে উপরে সবুজ বাটনে ক্লিক করুন।</p>
+            </div>
+
+            <div id="task-page" class="page hidden page-content">
+                
+                <div id="step-counter">1/5</div>
+
+                <h2>ডাউনলোড আনলক করুন</h2>
+                <p class="instruction">নিচের ছবিতে ক্লিক করুন। এটি নতুন ট্যাবে একটি বিজ্ঞাপন পেজ খুলবে। ১০ সেকেন্ড অপেক্ষা করলে ডাউনলোড বাটন আনলক হবে।</p>
+
+                <img src="images.png" id="ad-image" alt="বিজ্ঞাপন ইমেজে ক্লিক করুন">
+
+                <button id="unlock-button">LOCKED 🔒</button>
+                
+                <div id="timer-display" class="hidden">বিজ্ঞাপন লোড হচ্ছে...</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer">
+        © 2025 UR MOD | all right reserved.
+    </div>
+
+    <script>
+        const MAIN_PAGE = document.getElementById('main-page');
+        const TASK_PAGE = document.getElementById('task-page');
+        const AD_IMAGE = document.getElementById('ad-image');
+        const UNLOCK_BTN = document.getElementById('unlock-button');
+        const STEP_COUNTER = document.getElementById('step-counter');
+        const TIMER_DISPLAY = document.getElementById('timer-display');
+
+        const AD_LINK = 'https://www.effectivegatecpm.com/utsu280n?key=1573b3d30150666f41a1b89fc41a58ca';
+        const TOTAL_STEPS = 5;
+        const DELAY_SECONDS = 3; 
+        const COUNTDOWN_SECONDS = 10; 
+
+        // নতুন: একাধিক ফাইলের জন্য কনফিগারেশন অবজেক্ট
+        // **নোট: আপনি এখানে নতুন ফাইল যুক্ত করবেন।**
+        const FILE_CONFIG = {
+            // ১. মূল ফাইল
+            'download-file-1': {
+                key: 'downloadStep_File1', // localStorage key
+                finalLink: 'https://www.mediafire.com/file/n9a8odz2l13qupj/TheKingCheats_V145.apk/file?dkey=q19yzcl5iqq&r=197' // আসল লিংক
+            },
+            // ২. নতুন ফাইল (PUBG MOD)
+            'download-file-2': {
+                key: 'downloadStep_File2',
+                finalLink: 'https://download-link-for-pubg-vip-mod.com/download.zip' // আপনার PUBG MOD ডাউনলোড লিংক
+            },
+            // ৩. নতুন ফাইল (BGMI MOD)
+            'download-file-3': {
+                key: 'downloadStep_File3',
+                finalLink: 'https://download-link-for-bgmi-mod.com/download.apk' // আপনার BGMI MOD ডাউনলোড লিংক
+            },
+            
+            // ৪. নতুন ফাইল (সবজি MOD)
+            'download-file-4': {
+                key: 'downloadStep_File4',
+                finalLink: 'https://download-link-for-সবজি-mod.com/download.apk' // আপনার BGMI MOD ডাউনলোড লিংক
+            }
+        };
+
+        // স্টেপ লোড করা
+        let currentFileKey = localStorage.getItem('currentFileKey');
+        // যদি currentFileKey না থাকে, তবে main-page দেখাবে (currentStep 0 থাকবে)।
+        let currentStep = 0; 
+
+        if (currentFileKey && FILE_CONFIG[currentFileKey]) {
+            // যদি currentFileKey থাকে, তবে সেই ফাইলের স্টেপ লোড হবে
+            const fileData = FILE_CONFIG[currentFileKey];
+            currentStep = localStorage.getItem(fileData.key) ? parseInt(localStorage.getItem(fileData.key)) : 0;
+            
+            // ডাউনলোড শেষ হলে রিসেট লজিক
+            if (currentStep > TOTAL_STEPS) {
+                localStorage.removeItem(fileData.key);
+                localStorage.removeItem('currentFileKey');
+                currentStep = 0;
+                currentFileKey = null; // রিসেট
+            }
+        }
+        
+        // পেজ লোড হওয়ার সময় কোন পেজ দেখাবে তা নির্ধারণ করা
+        if (currentStep === 0) {
+            MAIN_PAGE.classList.remove('hidden');
+            TASK_PAGE.classList.add('hidden');
+
+            // নতুন: একাধিক বাটনে ক্লিক ইভেন্ট সেটআপ
+            Object.keys(FILE_CONFIG).forEach(buttonId => {
+                const button = document.getElementById(buttonId);
+                if (button) {
+                    button.addEventListener('click', function() {
+                        localStorage.setItem('currentFileKey', buttonId); // কোন বাটনে ক্লিক হলো তা সেভ করো
+                        localStorage.setItem(FILE_CONFIG[buttonId].key, 1); // স্টেপ ১ শুরু করো
+                        window.location.reload(); 
+                    });
+                }
+            });
+
+        } else {
+            MAIN_PAGE.classList.add('hidden');
+            TASK_PAGE.classList.remove('hidden');
+            setupTaskPage(currentStep);
+        }
+
+        // টাস্ক পেজের সেটআপ
+        function setupTaskPage(step) {
+            STEP_COUNTER.innerText = `${step}/${TOTAL_STEPS}`;
+            UNLOCK_BTN.disabled = true;
+            UNLOCK_BTN.innerText = 'LOCKED 🔒';
+            TIMER_DISPLAY.classList.add('hidden'); 
+
+            // ইমেজে ক্লিক করলে টাস্ক শুরু
+            AD_IMAGE.addEventListener('click', function() {
+                // ১. বিজ্ঞাপন নতুন ট্যাবে খোলা
+                window.open(AD_LINK, '_blank');
+                
+                // ২. বর্তমান পেজে টাইমার শুরু
+                startTimerWithDelay();
+                
+                // ইমেজের ক্লিক ইভেন্ট আর যাতে না ঘটে
+                AD_IMAGE.style.pointerEvents = 'none'; 
+            });
+        }
+
+        // ৩ সেকেন্ড অপেক্ষার পর ১০ সেকেন্ডের কাউন্টডাউন শুরু
+        function startTimerWithDelay() {
+            TIMER_DISPLAY.classList.remove('hidden');
+            TIMER_DISPLAY.innerText = `বিজ্ঞাপনে ক্লিক করা হয়েছে। ${DELAY_SECONDS} সেকেন্ড অপেক্ষা করুন...`;
+
+            // ৩ সেকেন্ড বিলম্ব
+            setTimeout(() => {
+                startCountdown();
+            }, DELAY_SECONDS * 1000);
+        }
+
+        // টাইমার ফাংশন (১০ সেকেন্ড কাউন্টডাউন)
+        function startCountdown() {
+            let countdown = COUNTDOWN_SECONDS;
+            TIMER_DISPLAY.innerText = `অনুগ্রহ করে অপেক্ষা করুন: ${countdown} সেকেন্ড...`;
+            
+            const timerInterval = setInterval(() => {
+                countdown--;
+                TIMER_DISPLAY.innerText = `অনুগ্রহ করে অপেক্ষা করুন: ${countdown} সেকেন্ড...`;
+
+                if (countdown <= 0) {
+                    clearInterval(timerInterval);
+                    
+                    // টাইমার শেষ হলে বাটন আনলক ও টেক্সট পরিবর্তন
+                    UNLOCK_BTN.disabled = false;
+                    UNLOCK_BTN.innerText = 'OPEN FILE';
+                    TIMER_DISPLAY.innerText = 'টাস্ক সম্পন্ন হয়েছে! নিচে ক্লিক করুন।';
+                    
+                    AD_IMAGE.style.pointerEvents = 'auto'; 
+                }
+            }, 1000);
+        }
+
+        // আনলক বাটনে ক্লিক করার লজিক (একাধিক ফাইলের জন্য আপডেট করা হয়েছে)
+        UNLOCK_BTN.addEventListener('click', function() {
+            if (UNLOCK_BTN.innerText === 'OPEN FILE' && !UNLOCK_BTN.disabled && currentFileKey) {
+                const fileData = FILE_CONFIG[currentFileKey]; 
+                
+                if (currentStep < TOTAL_STEPS) {
+                    // পরবর্তী ধাপে যাওয়া
+                    currentStep++;
+                    localStorage.setItem(fileData.key, currentStep); // নির্দিষ্ট ফাইলের স্টেপ সেভ হবে
+                    window.location.reload(); 
+                } else {
+                    // শেষ ধাপ - ফাইনাল ডাউনলোড লিঙ্কে রিডাইরেক্ট
+                    localStorage.removeItem(fileData.key); // স্টেপ কাউন্ট রিসেট
+                    localStorage.removeItem('currentFileKey'); // ফাইল ট্র্যাক করা বন্ধ
+                    window.location.href = fileData.finalLink; // নির্দিষ্ট ফাইলের ফাইনাল লিংক
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
