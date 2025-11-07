@@ -1,399 +1,348 @@
-<!DOCTYPE html>
-<html lang="bn">
+<!DOCTYPE html><html lang="bn">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UR MOD | ফাইল ডাউনলোড সেন্টার</title>
-    <style>
-        /* CSS কোড: নতুন হেডার ও ফুটার সহ ডিজাইন */
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            background-color: #f0f2f5;
-            display: flex;
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: #333;
-        }
-        .main-wrapper {
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            flex-grow: 1; 
-            padding-bottom: 50px; 
-        }
-        .container {
-            width: 90%;
-            max-width: 450px;
-            background: #fff;
-            padding: 0;
-            border-radius: 12px;
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-            text-align: center;
-            overflow: hidden;
-            margin-top: 20px;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>UR MOD | ফাইল ডাউনলোড সেন্টার</title>
 
-        /* নতুন হেডার ডিজাইন */
-        .header-bar {
-            background-color: #1a73e8; 
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 25px;
-        }
-        .logo-circle {
-            width: 80px; 
-            height: 80px;
-            background-color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-bottom: 10px;
-            font-weight: 900; 
-            color: #1a73e8; 
-            font-size: 16px; 
-            line-height: 1.2;
-            text-align: center;
-            padding: 5px;
-        }
-        .header-title h1 {
-            color: white;
-            margin: 0;
-            font-size: 30px; 
-            font-weight: 900; 
-            text-align: center;
-            letter-spacing: 1px; 
-        }
+  <!-- Fonts: Bengali + UI + Gaming vibe -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;800&family=Inter:wght@400;600;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
 
-        /* কন্টেন্ট এলাকার প্যাডিং */
-        .page-content {
-            padding: 0 30px 30px; 
-        }
-        
-        /* --- অন্যান্য ডিজাইন --- */
-        #main-page .content-box {
-            background-color: #e8f0fe;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-        }
-        #main-page .file-btn {
-            background-color: #28a745;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            width: 100%;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        #main-page .file-btn:hover {
-            background-color: #218838;
-        }
-        #main-page .ad-container-1 {
-            margin: 20px 0;
-            background: #ddd;
-            height: 150px; 
-            border: 1px dashed #aaa;
-            overflow: hidden; 
-        }
-        #main-page p {
-            font-size: 14px;
-            color: #666;
-            margin: 10px 0 0;
-        }
-        #main-page .ad-container-1 iframe {
-            display: block;
-            width: 100%;
-            height: 150px;
-        }
-        #task-page h2 {
-            font-size: 20px;
-            color: #1a73e8;
-            margin-bottom: 10px;
-        }
-        #task-page #step-counter {
-            font-size: 22px;
-            font-weight: bold;
-            color: #dc3545;
-            margin-bottom: 20px;
-        }
-        #task-page .instruction {
-            background-color: #fff3cd;
-            color: #856404;
-            padding: 10px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            font-weight: bold;
-        }
-        #task-page #ad-image {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
-            cursor: pointer;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        #task-page #unlock-button {
-            background-color: #6c757d;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            font-size: 18px;
-            cursor: not-allowed;
-            width: 100%;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        #task-page #unlock-button:not(:disabled) {
-            background-color: #28a745;
-            cursor: pointer;
-        }
-        #task-page #timer-display {
-            margin-top: 15px;
-            font-size: 16px;
-            font-weight: bold;
-            color: #dc3545;
-        }
-        .hidden {
-            display: none;
-        }
+  <style>
+    :root{
+      --bg: #f4f6fb;
+      --card: #ffffff;
+      --text: #1d2630;
+      --muted: #6b7280;
+      --primary: #1a73e8;
+      --primary-600: #155fc1;
+      --accent: #22c55e;
+      --accent-600:#16a34a;
+      --warning-bg:#fff3cd;
+      --warning:#8a6d3b;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(2, 6, 23, 0.08);
+      --radius: 14px;
+      --footer-h: 64px;
+    }
+    @media (prefers-color-scheme: dark){
+      :root{
+        --bg:#0b1220;
+        --card:#0f172a;
+        --text:#e5e7eb;
+        --muted:#9aa3b2;
+        --primary:#60a5fa;
+        --primary-600:#3b82f6;
+        --accent:#34d399;
+        --accent-600:#10b981;
+        --warning-bg:#3b2f12;
+        --warning:#facc15;
+        --border:#1f2937;
+        --shadow: 0 10px 30px rgba(0,0,0,0.45);
+      }
+    }
 
-        /* ফুটার ডিজাইন */
-        .footer {
-            width: 100%;
-            background-color: #333;
-            color: #ccc;
-            padding: 15px 0;
-            text-align: center;
-            font-size: 13px;
-            position: fixed; 
-            bottom: 0;
-            box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-        }
-    </style>
+    *{ box-sizing: border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: "Noto Sans Bengali","Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display:flex; flex-direction:column; min-height:100vh;
+      padding-bottom: var(--footer-h);
+    }
+    a{ color:inherit; text-decoration:none; }
+    img{ max-width:100%; display:block; }
+    button{ font:inherit; }
+
+    .main-wrapper{ width:100%; display:flex; justify-content:center; align-items:flex-start; padding:24px 12px 40px; flex:1; }
+    .container{ width:100%; max-width:520px; background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden; }
+
+    /* Header with gradient bar and gaming vibe logo */
+    .header-bar{
+      position:relative;
+      background: linear-gradient(135deg, var(--primary), #7c3aed 70%);
+      color:#fff; padding:22px 20px 26px; text-align:center;
+    }
+    .brand{ display:flex; align-items:center; justify-content:center; gap:14px; }
+    .logo-circle{
+      width:88px; height:88px; border-radius:20px; background:rgba(255,255,255,.10);
+      backdrop-filter: blur(6px);
+      display:flex; align-items:center; justify-content:center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+    }
+    .logo-circle svg{ width:64px; height:64px; }
+    .header-title h1{ margin:6px 0 0; font-size:28px; font-weight:800; letter-spacing:.3px; }
+    .tagline{ margin:6px 0 0; font-size:13px; opacity:.9; }
+
+    .page-content{ padding: 20px 22px 26px; }
+
+    .content-box{
+      background: linear-gradient(0deg, rgba(2,6,23,0.02), rgba(2,6,23,0.02)), var(--card);
+      border:1px solid var(--border);
+      border-radius:12px; padding:18px; margin-bottom:16px; text-align:left;
+    }
+    .content-box p{ margin:0 0 10px; color:var(--muted); font-size:14px; }
+
+    .file-btn{
+      width:100%; display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      background: var(--accent); color:#fff; border:none; border-radius:10px;
+      padding:14px 18px; font-weight:700; font-size:16px; cursor:pointer;
+      transition: transform .08s ease, box-shadow .2s ease, background .2s ease;
+      box-shadow: 0 8px 18px rgba(34,197,94,.25);
+    }
+    .file-btn:hover{ transform: translateY(-1px); }
+    .file-btn:active{ transform: translateY(0); }
+    .file-btn:focus-visible{ outline:3px solid rgba(99,102,241,.6); outline-offset:2px; }
+
+    #task-page h2{ font-size:20px; color:var(--primary-600); margin: 0 0 8px; }
+    #step-counter{
+      display:inline-flex; align-items:center; justify-content:center; gap:8px; padding:6px 12px; border-radius:999px;
+      font-weight:700; color:#fff; background: linear-gradient(135deg, #ef4444, #f59e0b); margin-bottom:14px; box-shadow: var(--shadow);
+    }
+
+    .instruction{ background: var(--warning-bg); color: var(--warning); padding:12px; border-radius:10px; border:1px dashed rgba(0,0,0,.08); margin: 0 0 14px; font-weight:600; }
+
+    #ad-image{ width:100%; border-radius:12px; box-shadow: var(--shadow); border:1px solid var(--border); margin-bottom:16px; }
+
+    #unlock-button{
+      width:100%; border:none; border-radius:10px; padding:14px 18px; font-weight:800; font-size:16px; letter-spacing:.2px; transition: filter .2s ease, transform .08s ease;
+      box-shadow: 0 8px 18px rgba(2,6,23,.08);
+    }
+    #unlock-button[disabled]{ background:#9ca3af; color:#f9fafb; cursor:not-allowed; filter:saturate(.7); }
+    #unlock-button:not([disabled]){ background: var(--accent); color:#fff; cursor:pointer; }
+    #unlock-button:not([disabled]):hover{ transform: translateY(-1px); }
+
+    #timer-display{ margin-top:10px; font-size:14px; font-weight:700; color:#ef4444; display:flex; align-items:center; gap:8px; }
+    #timer-display::before{ content:""; width:10px; height:10px; border-radius:50%; background:#ef4444; animation: pulse 1s linear infinite; }
+    @keyframes pulse{ 0%{ opacity:.2; transform:scale(.9);} 50%{opacity:1; transform:scale(1);} 100%{opacity:.2; transform:scale(.9);} }
+    @media (prefers-reduced-motion: reduce){
+      .file-btn, #unlock-button{ transition:none; }
+      #timer-display::before{ animation:none; }
+    }
+
+    .hidden{ display:none; }
+
+    .footer{
+      position:fixed; left:0; right:0; bottom:0; height:var(--footer-h);
+      background: linear-gradient(180deg, rgba(2,6,23,0.02), rgba(2,6,23,0.06)), var(--card);
+      border-top:1px solid var(--border); color:var(--muted); display:flex; align-items:center; justify-content:center; font-size:13px; padding:0 12px; text-align:center;
+      box-shadow: 0 -6px 20px rgba(2,6,23,0.06);
+    }
+
+    @media (max-width:360px){
+      .header-title h1{ font-size:24px; }
+      .logo-circle{ width:76px; height:76px; }
+      .logo-circle svg{ width:58px; height:58px; }
+    }
+  </style>
+
+  <!-- Popunder (one per page) — placed right before </head> -->
+  <script type="text/javascript" src="//pl28008088.effectivegatecpm.com/60/c7/c2/60c7c23f12f5079cae02bc6e7b008517.js"></script>
 </head>
 <body>
-
-    <div class="main-wrapper">
-        <div class="container">
-            
-            <div class="header-bar">
-                <div class="logo-circle"><span>UR MOD</span></div> 
-                <div class="header-title"><h1>UR MOD</h1></div>
-            </div>
-
-            <div id="main-page" class="page page-content">
-                <div class="content-box">
-                    <p>এখানে আপনি আপনার প্রয়োজনীয় অ্যাপস ও ফাইল সহজে ডাউনলোড করতে পারবেন। টাস্ক সম্পূর্ণ করে আনলক করুন!</p>
-                    <button id="download-file-1" class="file-btn">TheKingCheats_V145.apk ডাউনলোড করুন</button>
-                </div>
-                
-                <div class="content-box">
-                    <p>সবজি Mobile VIP MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
-                    <button id="download-file-4" class="file-btn">সবজি_VIP_MOD_OBB.zip ডাউনলোড করুন</button>
-                </div>
-
-                <div class="content-box">
-                    <p>PUBG Mobile VIP MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
-                    <button id="download-file-2" class="file-btn">PUBGM_VIP_MOD_OBB.zip ডাউনলোড করুন</button>
-                </div>
-
-                <div class="content-box">
-                    <p>BGMI New Update MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
-                    <button id="download-file-3" class="file-btn">BGMI_New_MOD.apk ডাউনলোড করুন</button>
-                </div>
-                
-
-                <p>আপনার ফাইলটি ডাউনলোড করতে উপরে সবুজ বাটনে ক্লিক করুন।</p>
-            </div>
-
-            <div id="task-page" class="page hidden page-content">
-                
-                <div id="step-counter">1/5</div>
-
-                <h2>ডাউনলোড আনলক করুন</h2>
-                <p class="instruction">নিচের ছবিতে ক্লিক করুন। এটি নতুন ট্যাবে একটি বিজ্ঞাপন পেজ খুলবে। ১০ সেকেন্ড অপেক্ষা করলে ডাউনলোড বাটন আনলক হবে।</p>
-
-                <img src="image.png" id="ad-image" alt="বিজ্ঞাপন ইমেজে ক্লিক করুন">
-
-                <button id="unlock-button">LOCKED 🔒</button>
-                
-                <div id="timer-display" class="hidden">বিজ্ঞাপন লোড হচ্ছে...</div>
-            </div>
+  <div class="main-wrapper">
+    <div class="container" role="region" aria-label="ডাউনলোড সেন্টার">
+      <div class="header-bar">
+        <div class="brand" aria-hidden="true">
+          <div class="logo-circle" title="UR MOD">
+            <!-- Heart logo with gaming-wave text -->
+            <svg viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <defs>
+                <filter id="s" x="-20%" y="-20%" width="140%" height="140%">
+                  <feDropShadow dx="0" dy="4" stdDeviation="3" flood-color="rgba(0,0,0,.35)"/>
+                </filter>
+                <!-- wave path for text -->
+                <path id="wave" d="M10,35 C35,10 70,60 95,35 S150,10 150,35" />
+                <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#00e5ff"/>
+                  <stop offset="100%" stop-color="#7c3aed"/>
+                </linearGradient>
+                <!-- neon glow for gaming vibe -->
+                <filter id="neon">
+                  <feGaussianBlur stdDeviation="2.2" result="blur"/>
+                  <feMerge>
+                    <feMergeNode in="blur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+              <!-- heart -->
+              <path filter="url(#s)" fill="url(#g)" d="M80 135c-2 0-4-.7-5.6-2.1l-42-36.5C16 82 12 63.6 22.4 49.2c9.2-12.7 27.6-15.3 40.1-5.8L80 57l17.5-13.6c12.6-9.5 30.9-6.9 40.1 5.8C148 63.6 144 82 127.6 96.4l-42 36.5c-1.6 1.4-3.6 2.1-5.6 2.1Z"/>
+              <!-- wavy brand text with Orbitron -->
+              <text font-size="14" font-weight="900" fill="#e5f2ff" letter-spacing="2" style="font-family:'Orbitron', system-ui, sans-serif" filter="url(#neon)">
+                <textPath href="#wave" startOffset="6%">UR&nbsp;MOD • UR&nbsp;MOD •</textPath>
+              </text>
+            </svg>
+          </div>
+          <div class="header-title">
+            <h1>UR MOD</h1>
+            <div class="tagline">ফাইল ডাউনলোড সেন্টার</div>
+          </div>
         </div>
+      </div>
+
+      <div id="main-page" class="page page-content" aria-live="polite">
+        <div class="content-box">
+          <p class="instruction">এখানে আপনি আপনার প্রয়োজনীয় অ্যাপস ও ফাইল সহজে ডাউনলোড করতে পারবেন। টাস্ক সম্পূর্ণ করে ডাউনলোড করুন!</p>
+        </div>
+
+        <div class="content-box">
+          <p>TheKingCheats V145 Mobile VIP MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
+          <button id="download-file-1" class="file-btn" aria-label="TheKingCheats_V145.apk ডাউনলোড শুরু করুন">TheKingCheats_V145.apk ডাউনলোড করুন</button>
+        </div>
+
+        <div class="content-box">
+          <p>সবজি Mobile VIP MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
+          <button id="download-file-4" class="file-btn" aria-label="সবজি_VIP_MOD_OBB.zip ডাউনলোড শুরু করুন">সবজি_VIP_MOD_OBB.zip ডাউনলোড করুন</button>
+        </div>
+
+        <div class="content-box">
+          <p>PUBG Mobile VIP MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
+          <button id="download-file-2" class="file-btn" aria-label="PUBGM_VIP_MOD_OBB.zip ডাউনলোড শুরু করুন">PUBGM_VIP_MOD_OBB.zip ডাউনলোড করুন</button>
+        </div>
+
+        <div class="content-box">
+          <p>BGMI New Update MOD ডাউনলোড করতে নিচের বাটনে ক্লিক করুন।</p>
+          <button id="download-file-3" class="file-btn" aria-label="BGMI_New_MOD.apk ডাউনলোড শুরু করুন">BGMI_New_MOD.apk ডাউনলোড করুন</button>
+        </div>
+
+        <p style="color:var(--muted); font-size:13px; text-align:center; margin:8px 0 0;">আপনার ফাইলটি ডাউনলোড করতে উপরে সবুজ বাটনে ক্লিক করুন।</p>
+      </div>
+
+      <div id="task-page" class="page hidden page-content" aria-live="polite">
+        <div id="step-counter">1/5</div>
+        <h2>ডাউনলোড আনলক করুন</h2>
+        <p class="instruction">নিচের ছবিতে ক্লিক করুন এবং ১০ সেকেন্ড অপেক্ষা করুন। ১০ সেকেন্ড অপেক্ষা করে ডাউনলোড বাটন আনলক করুন।</p>
+        <img src="image.png" id="ad-image" alt="বিজ্ঞাপন ইমেজ – ক্লিক করলে নতুন ট্যাব খুলবে" loading="lazy">
+        <button id="unlock-button" aria-disabled="true">LOCKED 🔒</button>
+        <div id="timer-display" class="hidden" aria-live="assertive">বিজ্ঞাপন লোড হচ্ছে...</div>
+      </div>
     </div>
-    
-    <div class="footer">
-        © 2025 UR MOD | all right reserved.
-    </div>
+  </div>
 
-    <script>
-        const MAIN_PAGE = document.getElementById('main-page');
-        const TASK_PAGE = document.getElementById('task-page');
-        const AD_IMAGE = document.getElementById('ad-image');
-        const UNLOCK_BTN = document.getElementById('unlock-button');
-        const STEP_COUNTER = document.getElementById('step-counter');
-        const TIMER_DISPLAY = document.getElementById('timer-display');
+  <div class="footer">© ২০২৫ UR MOD — All rights reserved.</div>
 
-        const AD_LINK = 'https://www.effectivegatecpm.com/utsu280n?key=1573b3d30150666f41a1b89fc41a58ca';
-        const TOTAL_STEPS = 5;
-        const DELAY_SECONDS = 3; 
-        const COUNTDOWN_SECONDS = 10; 
+  <script>
+    // ====== Core logic (design-only fixes applied) ======
+    const MAIN_PAGE = document.getElementById('main-page');
+    const TASK_PAGE = document.getElementById('task-page');
+    const AD_IMAGE = document.getElementById('ad-image');
+    const UNLOCK_BTN = document.getElementById('unlock-button');
+    const STEP_COUNTER = document.getElementById('step-counter');
+    const TIMER_DISPLAY = document.getElementById('timer-display');
 
-        // নতুন: একাধিক ফাইলের জন্য কনফিগারেশন অবজেক্ট
-        // **নোট: আপনি এখানে নতুন ফাইল যুক্ত করবেন।**
-        const FILE_CONFIG = {
-            // ১. মূল ফাইল
-            'download-file-1': {
-                key: 'downloadStep_File1', // localStorage key
-                finalLink: 'https://www.mediafire.com/file/n9a8odz2l13qupj/TheKingCheats_V145.apk/file?dkey=q19yzcl5iqq&r=197' // আসল লিংক
-            },
-            // ২. নতুন ফাইল (PUBG MOD)
-            'download-file-2': {
-                key: 'downloadStep_File2',
-                finalLink: 'https://download-link-for-pubg-vip-mod.com/download.zip' // আপনার PUBG MOD ডাউনলোড লিংক
-            },
-            // ৩. নতুন ফাইল (BGMI MOD)
-            'download-file-3': {
-                key: 'downloadStep_File3',
-                finalLink: 'https://download-link-for-bgmi-mod.com/download.apk' // আপনার BGMI MOD ডাউনলোড লিংক
-            },
-            
-            // ৪. নতুন ফাইল (সবজি MOD)
-            'download-file-4': {
-                key: 'downloadStep_File4',
-                finalLink: 'https://download-link-for-সবজি-mod.com/download.apk' // আপনার BGMI MOD ডাউনলোড লিংক
-            }
-        };
+    const AD_LINK = 'https://www.effectivegatecpm.com/utsu280n?key=1573b3d30150666f41a1b89fc41a58ca';
+    const TOTAL_STEPS = 5;
+    const DELAY_SECONDS = 3;       // hidden pre-delay
+    const COUNTDOWN_SECONDS = 10;  // visible countdown
 
-        // স্টেপ লোড করা
-        let currentFileKey = localStorage.getItem('currentFileKey');
-        // যদি currentFileKey না থাকে, তবে main-page দেখাবে (currentStep 0 থাকবে)।
-        let currentStep = 0; 
+    const FILE_CONFIG = {
+      'download-file-1': {
+        key: 'downloadStep_File1',
+        finalLink: 'https://www.mediafire.com/file/n9a8odz2l13qupj/TheKingCheats_V145.apk/file?dkey=q19yzcl5iqq&r=197'
+      },
+      'download-file-2': {
+        key: 'downloadStep_File2',
+        finalLink: 'https://download-link-for-pubg-vip-mod.com/download.zip'
+      },
+      'download-file-3': {
+        key: 'downloadStep_File3',
+        finalLink: 'https://download-link-for-bgmi-mod.com/download.apk'
+      },
+      'download-file-4': {
+        key: 'downloadStep_File4',
+        finalLink: 'https://download-link-for-সবজি-mod.com/download.apk'
+      }
+    };
 
-        if (currentFileKey && FILE_CONFIG[currentFileKey]) {
-            // যদি currentFileKey থাকে, তবে সেই ফাইলের স্টেপ লোড হবে
-            const fileData = FILE_CONFIG[currentFileKey];
-            currentStep = localStorage.getItem(fileData.key) ? parseInt(localStorage.getItem(fileData.key)) : 0;
-            
-            // ডাউনলোড শেষ হলে রিসেট লজিক
-            if (currentStep > TOTAL_STEPS) {
-                localStorage.removeItem(fileData.key);
-                localStorage.removeItem('currentFileKey');
-                currentStep = 0;
-                currentFileKey = null; // রিসেট
-            }
+    let currentFileKey = localStorage.getItem('currentFileKey');
+    let currentStep = 0;
+
+    if (currentFileKey && FILE_CONFIG[currentFileKey]) {
+      const fileData = FILE_CONFIG[currentFileKey];
+      currentStep = localStorage.getItem(fileData.key) ? parseInt(localStorage.getItem(fileData.key)) : 0;
+      if (currentStep > TOTAL_STEPS) {
+        localStorage.removeItem(fileData.key);
+        localStorage.removeItem('currentFileKey');
+        currentStep = 0;
+        currentFileKey = null;
+      }
+    }
+
+    if (currentStep === 0) {
+      MAIN_PAGE.classList.remove('hidden');
+      TASK_PAGE.classList.add('hidden');
+      Object.keys(FILE_CONFIG).forEach(buttonId => {
+        const button = document.getElementById(buttonId);
+        if (button) {
+          button.addEventListener('click', function(){
+            localStorage.setItem('currentFileKey', buttonId);
+            localStorage.setItem(FILE_CONFIG[buttonId].key, 1);
+            window.location.reload();
+          });
         }
-        
-        // পেজ লোড হওয়ার সময় কোন পেজ দেখাবে তা নির্ধারণ করা
-        if (currentStep === 0) {
-            MAIN_PAGE.classList.remove('hidden');
-            TASK_PAGE.classList.add('hidden');
+      });
+    } else {
+      MAIN_PAGE.classList.add('hidden');
+      TASK_PAGE.classList.remove('hidden');
+      setupTaskPage(currentStep);
+    }
 
-            // নতুন: একাধিক বাটনে ক্লিক ইভেন্ট সেটআপ
-            Object.keys(FILE_CONFIG).forEach(buttonId => {
-                const button = document.getElementById(buttonId);
-                if (button) {
-                    button.addEventListener('click', function() {
-                        localStorage.setItem('currentFileKey', buttonId); // কোন বাটনে ক্লিক হলো তা সেভ করো
-                        localStorage.setItem(FILE_CONFIG[buttonId].key, 1); // স্টেপ ১ শুরু করো
-                        window.location.reload(); 
-                    });
-                }
-            });
+    function setupTaskPage(step){
+      STEP_COUNTER.innerText = `${step}/${TOTAL_STEPS}`;
+      UNLOCK_BTN.disabled = true; UNLOCK_BTN.setAttribute('aria-disabled','true');
+      UNLOCK_BTN.innerText = 'LOCKED 🔒';
+      TIMER_DISPLAY.classList.add('hidden');           // ensure hidden initially
 
+      AD_IMAGE.style.pointerEvents = 'auto';
+      AD_IMAGE.addEventListener('click', function(){
+        window.open(AD_LINK, '_blank');
+        startTimerWithDelay();                         // 3s delay (hidden)
+        AD_IMAGE.style.pointerEvents = 'none';
+      }, { once:true });
+    }
+
+    // >>> CHANGE: Hide the 3-second pre-delay completely
+    function startTimerWithDelay(){
+      // Keep timer hidden during the hidden delay
+      TIMER_DISPLAY.classList.add('hidden');
+      // No user-facing text for the 3 sec delay
+      setTimeout(() => { startCountdown(); }, DELAY_SECONDS * 1000);
+    }
+
+    function startCountdown(){
+      let countdown = COUNTDOWN_SECONDS;
+      TIMER_DISPLAY.classList.remove('hidden');        // Only show when 10s starts
+      TIMER_DISPLAY.innerText = `অনুগ্রহ করে অপেক্ষা করুন: ${countdown} সেকেন্ড...`;
+      const timerInterval = setInterval(() => {
+        countdown--;
+        TIMER_DISPLAY.innerText = `অনুগ্রহ করে অপেক্ষা করুন: ${countdown} সেকেন্ড...`;
+        if (countdown <= 0){
+          clearInterval(timerInterval);
+          UNLOCK_BTN.disabled = false; UNLOCK_BTN.setAttribute('aria-disabled','false');
+          UNLOCK_BTN.innerText = 'OPEN FILE';
+          TIMER_DISPLAY.innerText = 'টাস্ক সম্পন্ন হয়েছে! নিচে ক্লিক করুন।';
+          AD_IMAGE.style.pointerEvents = 'auto';
+        }
+      }, 1000);
+    }
+
+    UNLOCK_BTN.addEventListener('click', function(){
+      if (UNLOCK_BTN.innerText === 'OPEN FILE' && !UNLOCK_BTN.disabled && currentFileKey){
+        const fileData = FILE_CONFIG[currentFileKey];
+        if (currentStep < TOTAL_STEPS){
+          currentStep++;
+          localStorage.setItem(fileData.key, currentStep);
+          window.location.reload();
         } else {
-            MAIN_PAGE.classList.add('hidden');
-            TASK_PAGE.classList.remove('hidden');
-            setupTaskPage(currentStep);
+          localStorage.removeItem(fileData.key);
+          localStorage.removeItem('currentFileKey');
+          window.location.href = fileData.finalLink;
         }
-
-        // টাস্ক পেজের সেটআপ
-        function setupTaskPage(step) {
-            STEP_COUNTER.innerText = `${step}/${TOTAL_STEPS}`;
-            UNLOCK_BTN.disabled = true;
-            UNLOCK_BTN.innerText = 'LOCKED 🔒';
-            TIMER_DISPLAY.classList.add('hidden'); 
-
-            // ইমেজে ক্লিক করলে টাস্ক শুরু
-            AD_IMAGE.addEventListener('click', function() {
-                // ১. বিজ্ঞাপন নতুন ট্যাবে খোলা
-                window.open(AD_LINK, '_blank');
-                
-                // ২. বর্তমান পেজে টাইমার শুরু
-                startTimerWithDelay();
-                
-                // ইমেজের ক্লিক ইভেন্ট আর যাতে না ঘটে
-                AD_IMAGE.style.pointerEvents = 'none'; 
-            });
-        }
-
-        // ৩ সেকেন্ড অপেক্ষার পর ১০ সেকেন্ডের কাউন্টডাউন শুরু
-        function startTimerWithDelay() {
-            TIMER_DISPLAY.classList.remove('hidden');
-            TIMER_DISPLAY.innerText = `বিজ্ঞাপনে ক্লিক করা হয়েছে। ${DELAY_SECONDS} সেকেন্ড অপেক্ষা করুন...`;
-
-            // ৩ সেকেন্ড বিলম্ব
-            setTimeout(() => {
-                startCountdown();
-            }, DELAY_SECONDS * 1000);
-        }
-
-        // টাইমার ফাংশন (১০ সেকেন্ড কাউন্টডাউন)
-        function startCountdown() {
-            let countdown = COUNTDOWN_SECONDS;
-            TIMER_DISPLAY.innerText = `অনুগ্রহ করে অপেক্ষা করুন: ${countdown} সেকেন্ড...`;
-            
-            const timerInterval = setInterval(() => {
-                countdown--;
-                TIMER_DISPLAY.innerText = `অনুগ্রহ করে অপেক্ষা করুন: ${countdown} সেকেন্ড...`;
-
-                if (countdown <= 0) {
-                    clearInterval(timerInterval);
-                    
-                    // টাইমার শেষ হলে বাটন আনলক ও টেক্সট পরিবর্তন
-                    UNLOCK_BTN.disabled = false;
-                    UNLOCK_BTN.innerText = 'OPEN FILE';
-                    TIMER_DISPLAY.innerText = 'টাস্ক সম্পন্ন হয়েছে! নিচে ক্লিক করুন।';
-                    
-                    AD_IMAGE.style.pointerEvents = 'auto'; 
-                }
-            }, 1000);
-        }
-
-        // আনলক বাটনে ক্লিক করার লজিক (একাধিক ফাইলের জন্য আপডেট করা হয়েছে)
-        UNLOCK_BTN.addEventListener('click', function() {
-            if (UNLOCK_BTN.innerText === 'OPEN FILE' && !UNLOCK_BTN.disabled && currentFileKey) {
-                const fileData = FILE_CONFIG[currentFileKey]; 
-                
-                if (currentStep < TOTAL_STEPS) {
-                    // পরবর্তী ধাপে যাওয়া
-                    currentStep++;
-                    localStorage.setItem(fileData.key, currentStep); // নির্দিষ্ট ফাইলের স্টেপ সেভ হবে
-                    window.location.reload(); 
-                } else {
-                    // শেষ ধাপ - ফাইনাল ডাউনলোড লিঙ্কে রিডাইরেক্ট
-                    localStorage.removeItem(fileData.key); // স্টেপ কাউন্ট রিসেট
-                    localStorage.removeItem('currentFileKey'); // ফাইল ট্র্যাক করা বন্ধ
-                    window.location.href = fileData.finalLink; // নির্দিষ্ট ফাইলের ফাইনাল লিংক
-                }
-            }
-        });
-    </script>
-// popunder
-    <script type='text/javascript' src='//pl28008088.effectivegatecpm.com/60/c7/c2/60c7c23f12f5079cae02bc6e7b008517.js'></script>
-
+      }
+    });
+  </script>
 </body>
 </html>
